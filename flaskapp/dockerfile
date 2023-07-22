@@ -1,22 +1,15 @@
-FROM ubuntu:18.04
+FROM python:3.9-slim
 
-LABEL maintainer="Prakhar Srivastav <prakhar@prakhar.me>"
+# Create app directory
+WORKDIR /app
 
-# install system-wide deps for python and node
-RUN apt-get -yqq update
-RUN apt-get -yqq install python3-pip python3-dev curl gnupg
+# Install app dependencies
+COPY requirements.txt ./
 
-# copy our application code
-ADD flaskapp /opt/flask-app
-WORKDIR /opt/flask-app
+RUN pip install -r requirements.txt
 
-# fetch app specific deps
+# Bundle app source
+COPY . .
 
-RUN pip3 install -r requirements.txt
-
-# expose port
 EXPOSE 5000
-
-# start app
-CMD [ "python3", "./app.py" ]
-
+CMD [ "flask", "run","--host","0.0.0.0","--port","5000"]
