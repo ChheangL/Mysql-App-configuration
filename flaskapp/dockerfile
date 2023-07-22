@@ -1,13 +1,22 @@
-FROM python:3-alpine
+FROM ubuntu:18.04
 
-WORKDIR /app
+LABEL maintainer="Prakhar Srivastav <prakhar@prakhar.me>"
 
-COPY requirements.txt ./
+# install system-wide deps for python and node
+RUN apt-get -yqq update
+RUN apt-get -yqq install python3-pip python3-dev curl gnupg
 
-RUN pip install -r requirements.txt
+# copy our application code
+ADD flaskapp /opt/flask-app
+WORKDIR /opt/flask-app
 
-COPY . .
+# fetch app specific deps
 
-CMD [ "python", "./app.py" ]
+RUN pip3 install -r requirements.txt
 
+# expose port
+EXPOSE 5000
+
+# start app
+CMD [ "python3", "./app.py" ]
 
