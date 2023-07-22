@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block head %} {% endblock %}
+{% block body %} 
+<div class="content">
+<a href="/">Refresh</a>
+<a href="/table">table</a>
+
+<img src='data:image/png;base64,{{data}}'/>
+<p> Table 1 </p>
+<table>
+<tr>
+    <th>Solar IN</th>
+    <th>AC_power</th>
+    <th>Battery</th>
+    <th>Time</th>
+</tr>
+{% for _,d in d1 %}
+<tr>
+    <td>{{d['In_power']}}</td>
+    <td>{{d['ac_power']}}</td>
+    <td>{{d['battery']}}</td>
+    <td>{{d['time-stamp']}}</td>
+</tr>
+{% endfor %}
+</table>
+<p> Table 2 </p>
+<table>
+    <tr>
+        <th>Solar IN</th>
+        <th>AC_power</th>
+        <th>Battery</th>
+        <th>Time</th>
+    </tr>
+    {% for _,d in d2 %}
+    <tr>
+        <td>{{d['In_power']}}</td>
+        <td>{{d['ac_power']}}</td>
+        <td>{{d['battery']}}</td>
+        <td>{{d['time-stamp']}}</td>
+
+    </tr>
+    {% endfor %}
+    </table>
+
+</div>
+
+{% endblock %}
