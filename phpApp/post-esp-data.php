@@ -11,7 +11,7 @@
   copies or substantial portions of the Software.
 */
 
-$servername = "localhost";
+$servername = "172.17.0.2";
 
 // REPLACE with your Database name
 $dbname = "dserp200";
