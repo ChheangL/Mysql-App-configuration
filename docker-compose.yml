@@ -20,7 +20,7 @@ services:
       - myDB:db 
     ports:
       - 8080:80
-    volumes:
-      - ./phpApp:/var/www/html
+    # volumes:
+    #   - ./phpApp:/var/www/html
     restart: unless-stopped
   
