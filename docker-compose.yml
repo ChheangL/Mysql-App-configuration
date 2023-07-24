@@ -13,7 +13,6 @@ services:
     volumes:
       - ./mydata:/config
     restart: unless-stopped
-    command: mysql -u root -pNo88138Jun2011 < /conifg/mybackup2023.sql
   phpmyadmin:
     image: phpmyadmin:5.2.1-apache
     container_name: phpmyadmin
