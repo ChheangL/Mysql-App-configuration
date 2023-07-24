@@ -1,0 +1,7 @@
+FROM lscr.io/linuxserver/mariadb:arm32v7-version-10.6.13-r0
+
+ENV PUID=1000
+ENV PGID=1000
+ENV TZ=Etc/UTC
+ENV MYSQL_ROOT_PASSWORD=No88138Jun2011
+
