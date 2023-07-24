@@ -25,8 +25,3 @@ services:
       - ./phpApp:/var/www/html
     restart: unless-stopped
   
-  myFlaskapp:
-    build: ./myFlaskapp
-    port:
-      - 8081:81
-    restart: unless-stopped
