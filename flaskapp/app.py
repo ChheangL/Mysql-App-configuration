@@ -13,7 +13,7 @@ app = Flask(__name__)
 old_df = pd.DataFrame([])
 
 def getDF(old_df = pd.DataFrame([])):
-    engine = sc.create_engine("mysql+pymysql://python:!123Cambodia@172.17.0.2:5001/dserp200?charset=utf8mb4")
+    engine = sc.create_engine("mysql+pymysql://python:!123Cambodia@192.168.9.110:5001/dserp200?charset=utf8mb4")
     connection = engine.connect()
     if not old_df.empty:
         stuff = sc.text(f'SELECT * FROM `log` WHERE `ID` > {old_df.index[0]} ORDER BY `ID` DESC')
@@ -62,7 +62,7 @@ def hello():
     # Generate the figure **without using pyplot**.
     global old_df
 
-    fig = Figure(figsize=(20,6))
+    fig = Figure(figsize=(25,6))
     ax = fig.subplots()
     #plot_df('2023-06-16','2023-06-17')
     #plot_df('2023-06-17','2023-06-18')
@@ -83,6 +83,7 @@ def hello():
 
 @app.route("/table")
 def table():
+    global old_df
     df1,df2,old_df = getDF(old_df)
     return render_template('table.html', d1=df1[:20].iterrows(),d2=df2[:20].iterrows())
 
