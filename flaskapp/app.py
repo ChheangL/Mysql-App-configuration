@@ -87,4 +87,4 @@ def table():
     return render_template('table.html', d1=df1[:20].iterrows(),d2=df2[:20].iterrows())
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',port='81')
+    app.run(host='0.0.0.0',port='5005')

@@ -7,4 +7,4 @@ docker run -d --name=myDB -v ./mydata:/config -v /etc/timezone:/etc/timezone:ro 
 
 docker run --name phpmyadmin -d --link myDB:db -p 80:80 --restart unless-stopped phpmyadmin1
 
-docker run -d --name=myweb -p 81:81 --restart unless-stopped lychheang008/my_web_flask
+docker run -d --name=myweb -p 5005:5005 --restart unless-stopped lychheang008/my_web_flask:2.0
