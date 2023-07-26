@@ -13,7 +13,7 @@ app = Flask(__name__)
 old_df = pd.DataFrame([])
 
 def getDF(old_df = pd.DataFrame([])):
-    engine = sc.create_engine("mysql+pymysql://esp32:!123Cambodia@myDB:3306/dserp200?charset=utf8mb4")
+    engine = sc.create_engine("mysql+pymysql://esp32:!123Cambodia@myDB.my-bridge-network:3306/dserp200?charset=utf8mb4")
     connection = engine.connect()
     if not old_df.empty:
         stuff = sc.text(f'SELECT * FROM `log` WHERE `ID` > {old_df.index[0]} ORDER BY `ID` DESC')

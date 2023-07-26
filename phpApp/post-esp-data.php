@@ -11,7 +11,7 @@
   copies or substantial portions of the Software.
 */
 
-$servername = "myDB";
+$servername = "myDB.my-bridge-network";
 
 // REPLACE with your Database name
 $dbname = "dserp200";
