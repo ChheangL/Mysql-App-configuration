@@ -13,7 +13,7 @@ app = Flask(__name__)
 old_df = pd.DataFrame([])
 
 def getDF(old_df = pd.DataFrame([])):
-    engine = sc.create_engine("mysql+pymysql://python:!123Cambodia@192.168.9.110:5001/dserp200?charset=utf8mb4")
+    engine = sc.create_engine("mysql+pymysql://esp32:!123Cambodia@myDB:3306/dserp200?charset=utf8mb4")
     connection = engine.connect()
     if not old_df.empty:
         stuff = sc.text(f'SELECT * FROM `log` WHERE `ID` > {old_df.index[0]} ORDER BY `ID` DESC')
@@ -25,6 +25,7 @@ def getDF(old_df = pd.DataFrame([])):
         stuff = sc.text(f'SELECT * FROM `log` ORDER BY `ID` DESC LIMIT {53944*2}')
         query = connection.execute(stuff)
         df = pd.DataFrame(query.fetchall())
+        print(df['ID'][:20])
         df.set_index('ID', drop=True, inplace=True)
 
     now = datetime.now()
