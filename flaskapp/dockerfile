@@ -1,14 +1,13 @@
-FROM ubuntu:23.04
+FROM alpine:3.18
 
 WORKDIR /app
-# Install app dependencies
-RUN apt update
-RUN DEBIAN_FRONTEND=noninteractive TZ=Asia/Bangkok apt -y install python3-pandas
-RUN apt -y install python3-flask python3-sqlalchemy python3-pymysql
 
+RUN apk update
+RUN apk add --no-cache python3 py3-pandas py3-matplotlib py3-flask py3-sqlalchemy py3-pymysql
+RUN apk add --no-cache tzdata
 
-# Bundle app source
+ENV TZ=Asia/Bangkok
+
 COPY . .
 
-# EXPOSE 5000
-CMD [ "python3", "app.py"]
+CMD ['python3','app.py']
