@@ -25,7 +25,7 @@ def getDF(old_df = pd.DataFrame([])):
         stuff = sc.text(f'SELECT * FROM `log` ORDER BY `ID` DESC LIMIT {53944*2}')
         query = connection.execute(stuff)
         df = pd.DataFrame(query.fetchall())
-        print(df['ID'][:20])
+        print(df)
         df.set_index('ID', drop=True, inplace=True)
 
     now = datetime.now()
