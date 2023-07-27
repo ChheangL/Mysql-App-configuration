@@ -9,4 +9,4 @@ docker run -d --network my-bridge-network --name=myDB -v ./mydata:/config -v /et
 
 docker run --network my-bridge-network --name phpmyadmin -d --link myDB:db -p 80:80 --restart unless-stopped phpmyadmin1
 
-docker run -d --network my-bridge-network --name=myweb -p 5005:5005 --restart unless-stopped lychheang008/my_web_flask:2.2
+docker run -d --network my-bridge-network --name=myweb -p 5005:5005 --restart unless-stopped lychheang008/my_web_flask:3.0
